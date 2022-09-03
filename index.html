@@ -6,14 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bulletin-portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
-    <style>
-        .hover:hover{
-           color:#0099CC;
-        }
-        .hover {cursor: pointer;}
-    </style>
-
+    
 </head>
 <body>
     <!-- Navbar -->
@@ -23,8 +16,7 @@
                 <div class="container-fluid">
                   <a class="navbar-brand"><span class="text-info fs-3">B</span>ULLETIN</a>
                   <div class="d-flex" role="search">
-                  <div class="d-flex" role="search">
-                    <button type="button" class="btn btn-info text-light me-2">News</button>
+                    <button id="news" type="button" class="btn btn-info text-light me-2">News</button>
                     <button id="blog" type="button" class="btn btn-info text-light">Blog</button>
                   </div>
                 </div>
@@ -38,22 +30,15 @@
    <!-- End -->
 
    <!-- Category -->
-   <main>
-        <section>
-            <div class="container text-center">
-                <div class="row row-cols-9">
-                  <div class="col hover">Home </div>
-                  <div class="col hover">Breaking news </div>
-                  <div class="col hover">Regular news</div>
-                  <div class="col hover">International news</div>
-                  <div class="col hover">Sports</div>
-                  <div class="col hover">Entertainment</div>
-                  <div class="col hover">Culture</div>
-                  <div class="col hover">Arts</div>
-                  <div class="col hover">All news</div>
-                </div>
-              </div>
-        </section>
+   <main class="container text-center">
+      <section>
+        <div class="dropdown">
+          <button class="btn btn-outline-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category
+          </button>
+          <ul id="create-li" class="dropdown-menu">
+        </div>
+      </section>
    </main>
   <!-- End -->
    <script src="js/api.js"></script>
