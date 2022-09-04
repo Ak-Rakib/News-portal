@@ -85,7 +85,7 @@ const displayCategories =async details => {
               <span><img src="${detail.author.img}" class="img-fluid img" alt="..."></span>
               <span>${detail.author.name? detail.author.name : 'Unknown'}</span>
               <span class="ms-3">Views: ${detail.total_view? detail.total_view : 'Emphty'}</span>
-              <span class="ms-5"><button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#phoneDetailsModal">Details</button></span>
+              <span class="ms-5"><button onclick = "modalDetailsApi('${detail.category_id}')" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#phoneDetailsModal">Details</button></span>
               <small>${detail.author.published_date}<small>
             </div>
           </div>
@@ -109,10 +109,31 @@ const loader = isSpiner => {
     }
 }
 // -------------
-
 // categoryDetailsApi();
-category();   
 
+
+const modalDetailsApi =async id =>{
+    try {
+        const url = `https://openapi.programming-hero.com/api/news/category/${id}`
+        // console.log(url);
+        const res = await fetch(url)
+        const data = await res.json()
+        displayModalDetails(data.data)
+    } catch (error3) {
+        console.log(`Error is: ${error3}`)
+    }
+}
+
+
+
+const displayModalDetails = category => {
+    console.log(category);
+    const modalDetails = document.getElementById('phoneDetailsModal2');
+    modalDetails.innerText =`${category[0].author.name}`
+}
+
+
+category();   
 
 
 //------------
