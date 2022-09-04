@@ -85,7 +85,7 @@ const displayCategories =async details => {
               <span><img src="${detail.author.img}" class="img-fluid img" alt="..."></span>
               <span>${detail.author.name? detail.author.name : 'Unknown'}</span>
               <span class="ms-3">Views: ${detail.total_view? detail.total_view : 'Emphty'}</span>
-              <span class="ms-5"><button onclick = "modalDetailsApi('${detail.category_id}')" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#phoneDetailsModal">Details</button></span>
+              <span class="ms-5"><button onclick = "modalDetailsApi('${detail.category_id}')" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#newsDetailsModal">Details</button></span>
               <small>${detail.author.published_date}<small>
             </div>
           </div>
@@ -126,13 +126,18 @@ const modalDetailsApi =async id =>{
 
 
 
-const displayModalDetails = category => {
-    console.log(category);
-    const modalDetails = document.getElementById('phoneDetailsModal2');
-    modalDetails.innerText =`${category[0].author.name}`
+const displayModalDetails =async modals => {
+    console.log(modals);
+    const modalDetails = document.getElementById('newsDetailsModallabel');
+    modalDetails.innerText = modals[0].title;
+
+    const exploreImg = document.getElementById('explore-img');
+    exploreImg.innerHTML = `
+        <div><img src = "${modals[0].image_url}" class="img-fluid"></div>
+        <p>Author:${modals[0].author.name}</p>
+        <p>Publish:${modals[0].author.published_date}</p>
+    `;
 }
-
-
 category();   
 
 
