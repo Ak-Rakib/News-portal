@@ -85,7 +85,7 @@ const displayCategories =async details => {
               <span><img src="${detail.author.img}" class="img-fluid img" alt="..."></span>
               <span>${detail.author.name? detail.author.name : 'Unknown'}</span>
               <span class="ms-3">Views: ${detail.total_view? detail.total_view : 'Emphty'}</span>
-              <span class="ms-5"><button class="btn btn-outline-info">Details</button></span>
+              <span class="ms-5"><button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#phoneDetailsModal">Details</button></span>
               <small>${detail.author.published_date}<small>
             </div>
           </div>
