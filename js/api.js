@@ -36,7 +36,7 @@ const getCategory = datas => {
 
 // --------------
 const categoryDetailsApi =async id =>{
-    // loader(true);
+    loader(true);
     try {
         const url = `https://openapi.programming-hero.com/api/news/category/${id}`
         // console.log(url);
@@ -57,6 +57,18 @@ const displayCategories =async details => {
     const detailsId = document.getElementById('display-details');
     detailsId.innerHTML = '';
 
+
+
+ //--------------
+    const blankPage = document.getElementById('no-phone-found');
+    if(details.length === 0){
+        blankPage.classList.remove('d-none');
+    } else{
+        blankPage.classList.add('d-none');
+    }
+ 
+ 
+
     for(const detail of details){
         // console.log(detail);
         const detailsDiv = document.createElement('div');
@@ -69,7 +81,7 @@ const displayCategories =async details => {
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">${detail.title? detail.title : 'Data not Found'}</h5>
-              <p class="card-text">${detail.details.slice(0,150)}</p>
+              <p class="card-text">${detail.details.slice(0,140) + '...'}</p>
               <span><img src="${detail.author.img}" class="img-fluid img" alt="..."></span>
               <span>${detail.author.name? detail.author.name : 'Unknown'}</span>
               <span class="ms-3">Views: ${detail.total_view? detail.total_view : 'Emphty'}</span>
@@ -81,26 +93,24 @@ const displayCategories =async details => {
         `;
         detailsId.appendChild(detailsDiv);
     }
-    // loader(false);
-// ---------------
-
-
-
-// ---------------
-// const loader = isSpiner => {
-//     const loaderSection = document.getElementById('loader');
-//     if(isSpiner){
-//         loaderSection.classList.remove('d-none')
-//     }
-//     else{
-//       loaderSection.classList.add('d-none');
-//     }
-// ---------------
-
+    loader(false);
 }
-categoryDetailsApi();
-// ------------
+// --------------
 
+
+// --------------
+const loader = isSpiner => {
+    const loaderSection = document.getElementById('loader');
+    if(isSpiner){
+        loaderSection.classList.remove('d-none')
+    }
+    else{
+      loaderSection.classList.add('d-none');
+    }
+}
+// -------------
+
+// categoryDetailsApi();
 category();   
 
 
